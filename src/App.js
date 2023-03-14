@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Barra from "./componentes/Barra";
+import DetallePokemones from "./views/DetallePokemones";
+import Home from "./views/Home";
+import NotFound from "./views/NotFound";
+import Personajes from "./views/Personajes";
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+      <Barra></Barra>
+        <Routes>  
+          <Route path="/" element={<Home></Home>}></Route>
+          <Route path="/personajes" element={<Personajes></Personajes>}></Route>
+          <Route path="/personajes/:id" element={<DetallePokemones></DetallePokemones>}></Route>
+          <Route path="*" element={<NotFound/>}></Route>
+        </Routes>   
+      </BrowserRouter>
     </div>
   );
 }
